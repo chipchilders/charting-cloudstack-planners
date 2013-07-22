@@ -25,13 +25,12 @@ for line in file_lines:
             ram = float(splitline[5])
             usedram = float(splitline[6])
             percentram = int(round((usedram/ram)*100))
-            print "RAM: " + str(ram) + " Used:" + str(usedram) + " percent:" + str(percentram)
     	    jt += "{'server': '" + splitline[2] + "', value: '" + str(percentram) + "'},"
 
 
 jt += "]\n];\n"
 
-file_to_write = open('testout.json', 'w')
+file_to_write = open('first-fit-planner-250vms1GBeach.json', 'w')
 file_to_write.truncate()
 file_to_write.write(jt)
 file_to_write.close()
