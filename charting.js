@@ -13,6 +13,7 @@ function nextData(){
   if (startDataPoint == data.length)
   {
     startDataPoint = 0;
+    setTimeout(function(){nextData()},3000);
   } else {
     setTimeout(function(){nextData()},renderSpeed);
   }
