@@ -30,7 +30,7 @@ for line in file_lines:
 
 jt += "]\n];\n"
 
-file_to_write = open('first-fit-planner-250vms1GBeach.json', 'w')
+file_to_write = open('implicit-ded-cated-planner-250vms1GBeach.json', 'w')
 file_to_write.truncate()
 file_to_write.write(jt)
 file_to_write.close()
