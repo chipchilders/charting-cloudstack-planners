@@ -8,9 +8,9 @@ var startDataPoint = 0;
 var renderSpeed = 50;
 
 function nextData(){
-  redraw(data[startDataPoint]);
+  redraw(memory[startDataPoint]);
   startDataPoint = startDataPoint + 1;
-  if (startDataPoint == data.length)
+  if (startDataPoint == memory.length)
   {
     startDataPoint = 0;
     setTimeout(function(){nextData()},3000);
@@ -48,11 +48,11 @@ function renderFirst(){
 
 chart = d3.select("body").append("svg")
     .attr("class", "chart")
-    .attr("width", w * data[0].length)
+    .attr("width", w * memory[0].length)
     .attr("height", h);
 
 chart.selectAll("rect")
-    .data(data[0])
+    .data(memory[0])
   .enter().append("rect")
     .attr("x", function(d, i) { return x(i) - .5; })
     .attr("y", function(d) { return h - y(d.value) - .5; })
@@ -62,17 +62,9 @@ chart.selectAll("rect")
 // horizontal line for the x-axis
 chart.append("line")
      .attr("x1", 0)
-     .attr("x2", w * data[0].length)
+     .attr("x2", w * memory[0].length)
      .attr("y1", h - .5)
      .attr("y2", h - .5)
-     .style("stroke", "#000");
-
-// horizontal line for the x-axis
-chart.append("line")
-     .attr("x1", 0)
-     .attr("x2", w * data[0].length)
-     .attr("y1", 0)
-     .attr("y2", 0)
      .style("stroke", "#000");
 
 setTimeout(function(){nextData()},renderSpeed);
